@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Уже не Сумма чисел</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function Summa() {
+			var Numbers = document.forms["frm"].elements["Numbers"].value;
+			var array = Numbers.split(" ");
+			toNum(array);
+			
+			function toNum(arr){
+				for (var i = 0; i < arr.length; i++) {
+					arr[i] = Number(arr[i]);
+				}
+			}
+
+			function sort(arr){
+				var sorted = arr.slice().sort((a, b) => a - b);	
+				var min = sorted[1];
+				var minIndex = arr.indexOf(min);
+				var max = sorted[sorted.length-2];
+				var maxIndex = arr.indexOf(max);
+				var buffer = arr[minIndex];
+				arr[minIndex] = arr[maxIndex];
+				arr[maxIndex] = buffer;
+
+				alert(arr);
+			}
+			sort(array);
+		}
+	</script>
+<form id="frm">
+	<input type="text" id="Numbers" placeholder="Число">
+	<input type="submit" onclick="Summa()">
+</form>
+</body>
+</html>
